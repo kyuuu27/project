@@ -1,0 +1,90 @@
+/* ===== Tailwind CSS 指令 ===== */
+@tailwind base;       /* 基础样式重置 */
+@tailwind components; /* 组件层 */
+@tailwind utilities;  /* 工具类层 */
+
+/* ===== shadcn/ui CSS 变量 (亮色主题) ===== */
+@layer base {
+  :root {
+    /* 背景/前景 */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    /* 卡片 */
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    /* 弹出层 */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    /* 主色 (蓝色) */
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+
+    /* 次要色 */
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    /* 静音色 */
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    /* 强调色 */
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    /* 错误色 (红色) */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* 边框/输入框/聚焦环 */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+
+    /* 圆角基准值 */
+    --radius: 0.5rem;
+  }
+}
+
+/* ===== 全局基础样式 ===== */
+@layer base {
+  * {
+    @apply border-border;  /* 所有元素使用统一边框颜色 */
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;  /* 启用连字等 OpenType 特性 */
+  }
+}
+
+/* ===== react-markdown 代码块样式覆盖 ===== */
+pre {
+  @apply rounded-lg border bg-muted/50 p-4 overflow-x-auto;
+}
+
+pre code {
+  @apply text-sm;
+}
+
+/* ===== 自定义滚动条 (右侧内容区) ===== */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 3px;
+}
+
+/* ===== 热搜词渐变切换动画 ===== */
+@keyframes fade-text {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.animate-fade-text {
+  animation: fade-text 3s ease-in-out infinite;
+}
